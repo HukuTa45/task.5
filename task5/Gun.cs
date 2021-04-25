@@ -4,7 +4,10 @@ using System.Text;
 
 namespace task5
 {
-    class CivilianClient
+    public enum Gun
     {
+        AK47,
+        M4A1
+
     }
 }
