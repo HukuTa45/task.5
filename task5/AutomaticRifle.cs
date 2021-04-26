@@ -19,9 +19,6 @@ namespace task5
             return Gun == gun;
         }
 
-        public void Shoot()
-        {
-            Console.WriteLine($"{Gun} делает выстрел");
-        }
+      
     }
 }

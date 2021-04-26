@@ -17,16 +17,16 @@ namespace task5
             {
                 new MilitaryClient("Никита","Кузьмин",DateTime.Parse("23.03.2001"),Gun.AK47),
                 new CivilianClient("Катя","Корюкина",DateTime.Parse("30.04.2001"),Gun.M4A1,false),
-                new CivilianClient("Вася","Пупкин",DateTime.Parse("23.03.2010"),Gun.AK47, true),
-                new MilitaryClient("Лола","Родькина",DateTime.Parse("10.07.1999"),Gun.AK47),
+                new CivilianClient("Вася","Пупкин",DateTime.Parse("23.03.2000"),Gun.AK47, true),
+                new CivilianClient("Дима","Калинин",DateTime.Parse("23.03.2010"),Gun.AK47, true),
+                new MilitaryClient("Лола","Родькина",DateTime.Parse("10.07.1999"),Gun.M4A1),
 
             };
 
             foreach (var client in clients)
                 try
-                {
-                    
-                    client.Shoot(warehouse.GetAutomaticRifle(client));
+                {                   
+                    client.Shoot(warehouse.GetShoot(client),client.RequestedWeapon);
                 }
                 catch (Exception e)
                 {

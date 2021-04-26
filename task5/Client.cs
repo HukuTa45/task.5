@@ -20,10 +20,11 @@ namespace task5
 			RequestedWeapon = requestedWeapon;
 		}
 
-		public void Shoot(AutomaticRifle automaticRifle)
+		public void Shoot(bool shootPermission,Gun gun)
         {
-            Console.WriteLine($"{Name} {Surname} делает выстрел");
-            automaticRifle.Shoot();
+            if(shootPermission)
+            Console.WriteLine($"{Name} {Surname} делает выстрел из {gun}");
+            
         }
     }
 

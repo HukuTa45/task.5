@@ -4,41 +4,41 @@ namespace task5
 {
     internal class Warehouse
     {
-        public AutomaticRifle[] automaticRifles;
+        private AutomaticRifle[] _automaticRifles;
 
         public Warehouse(AutomaticRifle[] automaticRifles)
         {
-            this.automaticRifles = automaticRifles;
+           _automaticRifles = automaticRifles;
         }
 
-        public AutomaticRifle GetAutomaticRifle(Client client)
+        public bool GetShoot(Client client)
         {
             if (DateTime.Now.Year - client.BirthDay.Year < 18)
-                throw new Exception("Клиенту нет 18!");
+            {
+                Console.WriteLine($"Клиенту {client.Name} {client.Surname} нет 18!");
+                return false;
+            }
 
             if (client is CivilianClient)
             {
                 var civilianclient = (CivilianClient)client;
                 if (!civilianclient.License)
                 {
-                    throw new Exception("У клиента отсутсвует лицензия!");
+                    Console.WriteLine($"У клиента {client.Name} {client.Surname} отсутсвует лицензия!");
                 }
-                return GetAutomaticRifle(client.RequestedWeapon);
+                else 
+                { 
+                    return true; 
+                }
             }
 
             if (client is MilitaryClient)
             {
-                return GetAutomaticRifle(client.RequestedWeapon);
-            }
-            return GetAutomaticRifle(client.RequestedWeapon);
+                return true;
+            } 
+            return false;
         }
 
-        public AutomaticRifle GetAutomaticRifle(Gun gun)
-        {
-            foreach (var automaticRifle in automaticRifles)
-                if (automaticRifle.isGun(gun))
-                    return automaticRifle;
-            throw new Exception("Нет запрашиваемого оружия!");
-        }
+      
     }
 }
