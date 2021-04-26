@@ -7,7 +7,9 @@ namespace task5
     public enum Gun
     {
         AK47,
-        M4A1
+        M4A1,
+        Famas,
+        Galil
 
     }
 }
