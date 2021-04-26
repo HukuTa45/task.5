@@ -13,18 +13,24 @@ namespace task5
 
         public AutomaticRifle GetAutomaticRifle(Client client)
         {
-            if (DateTime.Now.Year - client.BirthDay.Year > 18)
+            if (DateTime.Now.Year - client.BirthDay.Year < 18)
                 throw new Exception("Клиенту нет 18!");
 
-            if (client.Military)
+            if (client is CivilianClient)
             {
-                GetAutomaticRifle(client.RequestedWeapon);
+                var civilianclient = (CivilianClient)client;
+                if (!civilianclient.License)
+                {
+                    throw new Exception("У клиента отсутсвует лицензия!");
+                }
+                return GetAutomaticRifle(client.RequestedWeapon);
             }
 
-            if (!client.License) 
-                throw new Exception("У клиента отсутсвует лицензия1");
+            if (client is MilitaryClient)
+            {
+                return GetAutomaticRifle(client.RequestedWeapon);
+            }
             return GetAutomaticRifle(client.RequestedWeapon);
-
         }
 
         public AutomaticRifle GetAutomaticRifle(Gun gun)
