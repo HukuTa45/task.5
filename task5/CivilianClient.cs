@@ -6,7 +6,7 @@ namespace task5
 {
 	public class CivilianClient : Client
 	{
-		public bool License;
+		public bool License { get; }
 
         public CivilianClient(string name, string surname, DateTime birthDay, Gun requestedWeapon, bool license) : base(name, surname, birthDay, requestedWeapon)
         {

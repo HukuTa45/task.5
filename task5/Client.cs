@@ -22,8 +22,10 @@ namespace task5
 
 		public void Shoot(bool shootPermission,Gun gun)
         {
-            if(shootPermission)
-            Console.WriteLine($"{Name} {Surname} делает выстрел из {gun}");
+            if (shootPermission)
+            {
+                Console.WriteLine($"Клиент {Name} {Surname} делает выстрел из {gun}");
+            }
             
         }
     }
